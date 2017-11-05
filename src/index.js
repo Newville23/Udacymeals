@@ -10,7 +10,6 @@ const store = createStore(
     reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
-console.log(store.getState())
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App store = { store }/>, document.getElementById('root'));
 registerServiceWorker();
 

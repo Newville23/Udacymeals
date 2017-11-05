@@ -47,7 +47,7 @@ const calendar = (state = initialCalendarState, action) => {
                 ...state,
                 [day]: {
                     ...state[day],
-                    [meal]: meal.label
+                    [meal]: recipe.label
                 }
             }
         case REMOVE_FROM_CALENDAR:
