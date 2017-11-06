@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../App.css';
-import { addRecipe } from '../actions'
+import { connect } from 'react-redux'
+import { addRecipe, removeFromCalendar } from '../actions'
 
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
   //   this.input.value = ''
   //  }
   render() {
+    console.log('props', this.props)
     return (
       <div className="App">
         Hallo!!
@@ -34,5 +36,19 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = (calendar) => {
+  const dayOrder = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+  return {
+    calendar: dayOrder.map((day) => ({
+      day,
+      meals: Object.keys(calendar[day]).reduce((meals, meal) => {
+        meals[meal] = calendar[day][meal]
+        ? calendar[day][meal]
+        : null 
 
-export default App;
+        return meals
+      }, {})
+    }))
+  }
+} 
+export default connect(mapStateToProps)(App);
