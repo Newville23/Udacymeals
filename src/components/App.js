@@ -4,6 +4,11 @@ import { connect } from 'react-redux'
 import { addRecipe, removeFromCalendar } from '../actions'
 import { capitalize } from '../utils/helpers'
 import CalendarIcon from 'react-icons/lib/fa/calendar-plus-o'
+import Modal from 'react-modal'
+import ArrowRightIcon from 'react-icons/lib/fa/arrow-circle-right'
+import Loading from 'react-loading'
+import { fetchRecipes } from '../utils/api'
+import FoodList from './FoodList'
 
 
 class App extends Component {
