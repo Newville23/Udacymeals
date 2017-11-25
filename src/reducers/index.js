@@ -7,7 +7,7 @@ const food = (state = {}, action) => {
             const { recipe } = action
             return{
                 ...state,
-                [recipe.label]: recipe
+                [recipe.label]: recipe,
             }
     
         default:
@@ -49,33 +49,34 @@ const initialCalendarState = {
        breakfast: null,
         lunch: null,
         dinner: null
-    } 
+    }, 
 }
 
-const calendar = (state = initialCalendarState, action) => {
-    const {day, recipe, meal } = action
 
+function calendar (state = initialCalendarState, action) {
+    const { day, recipe, meal } = action
+  
     switch (action.type) {
-        case ADD_RECIPE:
-            return{
-                ...state,
-                [day]: {
-                    ...state[day],
-                    [meal]: recipe.label
-                }
-            }
-        case REMOVE_FROM_CALENDAR:
-            return{
-                ...state,
-                [day]: {
-                    ...state[day],
-                    [meal]: null
-                }
-            }
-        default:
-            return state
+      case ADD_RECIPE :
+        return {
+          ...state,
+          [day]: {
+            ...state[day],
+            [meal]: recipe.label,
+          }
+        }
+      case REMOVE_FROM_CALENDAR :
+        return {
+          ...state,
+          [day]: {
+            ...state[day],
+            [meal]: null,
+          }
+        }
+      default :
+        return state
     }
-}
+  }
 
 export default combineReducers({
     food, 
